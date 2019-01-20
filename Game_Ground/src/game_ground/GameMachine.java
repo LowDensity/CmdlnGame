@@ -10,7 +10,6 @@ package game_ground;
  * @author Harry
  */
 public interface GameMachine {
-    
+    public abstract boolean isrunning();
     public abstract String ProcessArguments(String arg);
-    public boolean isrunning;
 }

@@ -31,10 +31,12 @@ public class MainGame {
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(MainGame.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        game=new GameLobby();
         do {
             ShowWellcome();
-            RunGame(); //continue updating until change game
             ChooseGame();
+            RunGame(); //continue updating until change game
             if(game==null){
                 ShowThankMessage();
                 break;}
@@ -42,7 +44,7 @@ public class MainGame {
 
     }
     private static void ChooseGame(){
-        System.out.println(">");
+        System.out.print(">");
         try {
             String[] cmds =inputReader.readLine().split(" ");
             game=CreateSelectedGame(cmds[0]);
@@ -63,8 +65,12 @@ public class MainGame {
     
     
     private static void RunGame(){
-        while(game.isrunning){
-            game.ProcessArguments(inputReader.readLine());
+        while(game.isrunning()){
+            try {
+                System.out.println(game.ProcessArguments(inputReader.readLine()));
+            } catch (IOException ex) {
+                Logger.getLogger(MainGame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }    
     }
     

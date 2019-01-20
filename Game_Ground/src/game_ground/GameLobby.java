@@ -14,7 +14,13 @@ public class GameLobby  implements GameMachine{
     @Override
     public String ProcessArguments(String arg) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates."
-       return "dddd";
+       return arg+"_lobby";
+    }
+
+    @Override
+    public boolean isrunning() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
     
 }
