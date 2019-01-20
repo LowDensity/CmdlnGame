@@ -40,8 +40,15 @@ public class GuessingNum implements GameMachine {
                    GameState=1;
                    return PrintChoiceMessage();
             case 1:
-                int guess=Integer.parseInt(arg);
+                int guess;
+                try{
+                    guess=Integer.parseInt(arg);
+                }catch(NumberFormatException nfe){
+                    return "輸入的數字格式錯誤，請重新輸入。";
+                }
+                
                 if(match(guess)){GameState=2;return "恭喜猜中";}
+                if(CurrentBottomBound>guess || CurrentUpperBound<guess){return "輸入的數字超出範圍，請重新輸入。";}
                 return UpdatedBounds(guess);
             case 2:return ProcessEndGameRequest(arg);
             default :return "NoooooooooMatching Case";
