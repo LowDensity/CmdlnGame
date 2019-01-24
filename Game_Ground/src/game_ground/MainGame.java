@@ -60,6 +60,7 @@ public class MainGame {
         switch(name){
             case "GN":return new GuessingNum();
             case "PCS":return new PapSciStone();
+            case "TIC":return new TicToe();
 
             default: throw new NoGameFoundException();
         }
