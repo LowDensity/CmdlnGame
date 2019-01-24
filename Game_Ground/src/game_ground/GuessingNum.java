@@ -36,7 +36,6 @@ public class GuessingNum implements GameMachine {
     public String ProcessArguments(String arg) {
         switch(GameState){
             case 0:
-                   ProcessSetup();
                    GameState=1;
                    return PrintChoiceMessage();
             case 1:
@@ -74,11 +73,13 @@ public class GuessingNum implements GameMachine {
     return "您沒猜中，目前的範圍為：  "+ CurrentBottomBound +"  到  "+ CurrentUpperBound;
     }
     
-    private void ProcessSetup(){
+    @Override
+    public void ProcessSetup(){
         TargetNumber=(int)(Math.random()*100 +1);
         CurrentUpperBound=100;
         CurrentBottomBound=1;
         GameId+=1;
+        System.out.println(PrintChoiceMessage());
     }
     
     private String PrintChoiceMessage(){
@@ -93,5 +94,7 @@ public class GuessingNum implements GameMachine {
     public boolean isrunning() {
         return true;
     }
+
+   
     
 }

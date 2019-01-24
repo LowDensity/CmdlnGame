@@ -22,5 +22,10 @@ public class GameLobby  implements GameMachine{
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return true;
     }
+
+    @Override
+    public void ProcessSetup() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

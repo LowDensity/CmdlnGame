@@ -48,6 +48,8 @@ public class MainGame {
         try {
             String[] cmds =inputReader.readLine().split(" ");
             game=CreateSelectedGame(cmds[0]);
+            game.ProcessSetup();
+            //
         } catch (IOException ex) {
             Logger.getLogger(MainGame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -57,6 +59,8 @@ public class MainGame {
     private static GameMachine CreateSelectedGame(String name){
         switch(name){
             case "GN":return new GuessingNum();
+            case "PCS":return new PapSciStone();
+
             default: throw new NoGameFoundException();
         }
     }

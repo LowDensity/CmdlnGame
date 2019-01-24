@@ -12,4 +12,6 @@ package game_ground;
 public interface GameMachine {
     public abstract boolean isrunning();
     public abstract String ProcessArguments(String arg);
+    public abstract void ProcessSetup();
+    
 }
