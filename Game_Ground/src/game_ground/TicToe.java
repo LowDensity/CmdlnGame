@@ -61,6 +61,7 @@ public class TicToe implements GameMachine {
             }
         }
         if (winner!=UNASSIGNED_BLOCK){return ProcessWinnerMessage(winner);}
+        return "您的回合，請輸入要設定的座標，格式為(x,y)，計算從1開始。";
     }
     
     //判斷遊戲是否已經結束，回傳贏家的數字代號。
@@ -112,7 +113,7 @@ public class TicToe implements GameMachine {
             case PLAYER_TOKEN:return "遊戲結束，玩家獲勝";
             case RIVAL_TOKEN:return "遊戲結束，電腦獲勝";
             case GAME_FINISHED:return "遊戲結束，平手";
-            default "未知結果，天殺的有BUG!!!!!!!!!!!!!!!!!!!!!!";
+            default:return "未知結果，天殺的有BUG!!!!!!!!!!!!!!!!!!!!!!";
         }
     }
 
