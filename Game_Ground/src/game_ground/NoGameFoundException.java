@@ -10,6 +10,5 @@ package game_ground;
  * @author Harry
  */
 public class NoGameFoundException extends RuntimeException{
-    
-    
+        
 }
