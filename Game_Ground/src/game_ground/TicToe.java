@@ -35,12 +35,30 @@ public class TicToe implements GameMachine {
 
     @Override
     public String ProcessArguments(String arg) {
-        if(arg.trim().matches(cordinatePattern)){
+        switch(GameState){
+            case 0: ProcessSetup();return "這是圈圈叉叉遊戲，請輸入您的座標(x,y)";
+            case 1: return ProcessInput(arg);
+            default:return "Bugs!!!!!";
+        }
+
+    }
+    
+    private String ProcessWinnerMessage(int winner){
+        switch(winner){
+            case PLAYER_TOKEN:return "遊戲結束，玩家獲勝";
+            case RIVAL_TOKEN:return "遊戲結束，電腦獲勝";
+            case GAME_FINISHED:return "遊戲結束，平手";
+            default:return "未知結果，天殺的有BUG!!!!!!!!!!!!!!!!!!!!!!";
+        }
+    }
+    
+    private String ProcessInput(String arg){
+        if(!arg.trim().matches(cordinatePattern)){
             return "輸入錯誤，請重新輸入";
         }
-        String[] cordinate=arg.trim().split("[\\D]");
-        int x= Integer.parseInt(cordinate[0])-1;
-        int y= Integer.parseInt(cordinate[1])-1;
+        String[] cordinate=arg.split("[\\D]");
+        int x= Integer.parseInt(cordinate[1])-1;
+        int y= Integer.parseInt(cordinate[2])-1;
         int inputIndex= x*3 +y;
         int currentNumber;
         try{
@@ -60,7 +78,10 @@ public class TicToe implements GameMachine {
                 break;
             }
         }
-        if (winner!=UNASSIGNED_BLOCK){return ProcessWinnerMessage(winner);}
+        if (winner!=UNASSIGNED_BLOCK){
+            ProcessSetup();
+            return ProcessWinnerMessage(winner);
+        }
         return "您的回合，請輸入要設定的座標，格式為(x,y)，計算從1開始。";
     }
     
@@ -106,20 +127,18 @@ public class TicToe implements GameMachine {
             if(tictoeboard[i]!=UNASSIGNED_BLOCK){return UNASSIGNED_BLOCK;}
         }
         return GAME_FINISHED;
-    }
     
-    private String ProcessWinnerMessage(int winner){
-        switch(winner){
-            case PLAYER_TOKEN:return "遊戲結束，玩家獲勝";
-            case RIVAL_TOKEN:return "遊戲結束，電腦獲勝";
-            case GAME_FINISHED:return "遊戲結束，平手";
-            default:return "未知結果，天殺的有BUG!!!!!!!!!!!!!!!!!!!!!!";
-        }
     }
 
     @Override
     public void ProcessSetup() {
         tictoeboard=new int[9];
+        //填滿unassigned_block
+        for(int i= 0; i <9;i++){tictoeboard[i]=UNASSIGNED_BLOCK;}
+        GameId+=1;
+        GameState=1;
+        
+        
     }
     
 }
