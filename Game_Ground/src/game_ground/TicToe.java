@@ -72,7 +72,9 @@ public class TicToe implements GameMachine {
         if (winner!=UNASSIGNED_BLOCK){return ProcessWinnerMessage(winner);}
         boolean rivalMoved=false;
         while(true){
-            int rivalPosition=(int)Math.random()*9;
+            
+            int rivalPosition=(int)(Math.random()*9);
+            System.out.println("rival moving "+ rivalPosition);
             if(tictoeboard[rivalPosition]==UNASSIGNED_BLOCK){
                 tictoeboard[rivalPosition]=RIVAL_TOKEN;
                 break;
@@ -85,54 +87,58 @@ public class TicToe implements GameMachine {
         StringBuilder tictoeBoardStatus=new StringBuilder();
         for(int i =0; i< tictoeboard.length;i++){
             tictoeBoardStatus.append(" "+tictoeboard[i]+" , ");
-            if(i %3==0){tictoeBoardStatus.append("\n");}
+            if((i+1) %3==0){tictoeBoardStatus.append("\n");}
         }
-        return "您的回合，請輸入要設定的座標，格式為(x,y)，計算從1開始。\n";
+        return "您的回合，請輸入要設定的座標，格式為(x,y)，計算從1開始。\n 當下盤面為：\n"+tictoeBoardStatus.toString();
     }
     
     //判斷遊戲是否已經結束，回傳贏家的數字代號。
     //版面已被填滿但沒有勝利者時，回傳-1
     public int GetWinner(){
         int winner=UNASSIGNED_BLOCK;
-        //處理橫排
-        for(int x=0;x <3 ; x++){
-            int current_winner=tictoeboard[x*3];
-            for(int x2=0;x2<3;x2++){
-                int index=x*3 + x2;
-                if (current_winner!=tictoeboard[index]){
+        //三條橫線
+        for(int i = 0 ; i<3 ; i++){
+            int last_token=tictoeboard[i*3];
+            for(int i2 =0 ;i2<3; i2++){
+                if (tictoeboard[i*3+i2] != last_token ){
+                    last_token=UNASSIGNED_BLOCK;
                     break;
-                }else{current_winner=tictoeboard[index];}
+                    }
+                }
+            if(last_token!=UNASSIGNED_BLOCK){
+                winner=last_token;
+                break;
             }
-            if (current_winner!=UNASSIGNED_BLOCK){return current_winner;}
         }
-        //處理縱列
-        
-        for(int y=0;y <3 ; y++){
-            int current_winner=tictoeboard[y];
+ 
+
+        for(int y=0;y<3;y++){
+            int current_token=tictoeboard[y];
             for(int y2=0;y2<3;y2++){
-                int index=y+y2*3;
-                if (current_winner!=tictoeboard[index]){
+                if(tictoeboard[y+y2*3] != current_token){
+                    current_token=UNASSIGNED_BLOCK;
                     break;
-                }else{current_winner=tictoeboard[index];}
+                }
             }
-            if (current_winner!=UNASSIGNED_BLOCK){return current_winner;}
-        }
-        //處理斜線
-        
-        for(int c=0 ; c<=2; c++){
-            int current_winner=tictoeboard[c];
-            for(int c2 = 0 ;c2<3;c2*=2){
-                int index=(2+c)*c;
-                if (tictoeboard[index]!=current_winner){break;}
+            if(current_token!=UNASSIGNED_BLOCK){
+                winner=current_token;
             }
-            if (current_winner!=UNASSIGNED_BLOCK){return current_winner;}
         }
-        
-        for(int i=0 ;i<tictoeboard.length;i++){
-            if(tictoeboard[i]!=UNASSIGNED_BLOCK){return UNASSIGNED_BLOCK;}
+
+
+        for(int u=0 ; u < 4; u+=2){
+            int current_token_d=tictoeboard[u];
+            for(int u2=0;u2<3;u2++){
+                if(tictoeboard[u+u2*(4-u)] != current_token_d){
+                    current_token_d=UNASSIGNED_BLOCK;
+                    break;
+                }
+            }
+            if(current_token_d!=UNASSIGNED_BLOCK){
+                winner=current_token_d;
+            }
         }
-        return GAME_FINISHED;
-    
+        return winner;
     }
 
     @Override
