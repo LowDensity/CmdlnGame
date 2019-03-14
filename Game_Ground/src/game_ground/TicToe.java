@@ -36,7 +36,7 @@ public class TicToe implements GameMachine {
     @Override
     public String ProcessArguments(String arg) {
         switch(GameState){
-            case 0: ProcessSetup();return "這是圈圈叉叉遊戲，請輸入您的座標(x,y)";
+            case 0: ProcessSetup();return "";
             case 1: return ProcessInput(arg);
             default:return "Bugs!!!!!";
         }
@@ -82,7 +82,12 @@ public class TicToe implements GameMachine {
             ProcessSetup();
             return ProcessWinnerMessage(winner);
         }
-        return "您的回合，請輸入要設定的座標，格式為(x,y)，計算從1開始。";
+        StringBuilder tictoeBoardStatus=new StringBuilder();
+        for(int i =0; i< tictoeboard.length;i++){
+            tictoeBoardStatus.append(" "+tictoeboard[i]+" , ");
+            if(i %3==0){tictoeBoardStatus.append("\n");}
+        }
+        return "您的回合，請輸入要設定的座標，格式為(x,y)，計算從1開始。\n";
     }
     
     //判斷遊戲是否已經結束，回傳贏家的數字代號。
@@ -137,6 +142,7 @@ public class TicToe implements GameMachine {
         for(int i= 0; i <9;i++){tictoeboard[i]=UNASSIGNED_BLOCK;}
         GameId+=1;
         GameState=1;
+        System.out.println("這是圈圈叉叉遊戲，請輸入您的座標(x,y)");
         
         
     }
