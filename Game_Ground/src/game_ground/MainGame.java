@@ -33,14 +33,22 @@ public class MainGame {
         }
         
         game=new GameLobby();
-        do {
-            ShowWellcome();
-            ChooseGame();
-            RunGame(); //continue updating until change game
-            if(game==null){
-                ShowThankMessage();
-                break;}
-        }while(game!=null);
+            do {
+                try{
+                    ShowWellcome();
+                    ChooseGame();
+                    RunGame(); //continue updating until change game
+                    if(game==null){
+                        ShowThankMessage();
+                        break;}
+                }
+                catch(NoGameFoundException ngfe){
+                    System.out.println("您輸入的遊戲不存在，請重新輸入。");
+                }
+            }while(game!=null);    
+
+     
+        
 
     }
     private static void ChooseGame(){
