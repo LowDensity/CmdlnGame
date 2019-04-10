@@ -5,6 +5,8 @@
  */
 package game_ground;
 
+import game_ground.message.Message;
+
 /**
  *
  * @author Harry
@@ -25,6 +27,16 @@ public class GameLobby  implements GameMachine{
 
     @Override
     public void ProcessSetup() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Message LoadMessageConfigs(String configuration) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Message getMessage() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -5,6 +5,7 @@
  */
 package game_ground;
 
+import game_ground.message.Message;
 import java.util.regex.Pattern;
 
 /**
@@ -151,6 +152,16 @@ public class TicToe implements GameMachine {
         System.out.println("這是圈圈叉叉遊戲，請輸入您的座標(x,y)");
         
         
+    }
+
+    @Override
+    public Message LoadMessageConfigs(String configuration) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Message getMessage() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

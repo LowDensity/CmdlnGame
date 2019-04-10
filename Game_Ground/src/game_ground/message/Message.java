@@ -10,39 +10,33 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
-/**
+/**r
  *
  * @author Harry
  * 用來讀取文件設定的Map，提供大量常數供使用
  * 
  */
 public abstract class Message {
-   static int WellcomeMessage=0;
-   static int WellcomeMessage1=0;
-   static int WellcomeMessage2=0;
-   static int WellcomeMessage3=0;
-   private HashMap messages;
+   private final String WellcomeMessage;
+   private final String YouWinMessage;
+   private final String YoutLoseMessage;
+   private final String YourTurnMessage;
+   private final String HelpMessage;
+   
     
-    public Message(String configurationPath){
-        messages=new HashMap();
-        BufferedReader configFile;
-        FileReader fr;
-       try {
-           fr=new FileReader(configurationPath);
-           configFile=new BufferedReader(fr);
-           
-       } catch (FileNotFoundException ex) {
-           Logger.getLogger(Message.class.getName()).log(Level.SEVERE, null, ex);
-       }
-       
-        
+    public Message(HashMap<String,String> messageLibrary){
+       WellcomeMessage=messageLibrary.get("Wellcom");
+       YouWinMessage=messageLibrary.get("Wellcom");
+       YoutLoseMessage=messageLibrary.get("Wellcom");
+       YourTurnMessage=messageLibrary.get("Wellcom");
+       HelpMessage=messageLibrary.get("Wellcom");
     }
     
 }
+
 

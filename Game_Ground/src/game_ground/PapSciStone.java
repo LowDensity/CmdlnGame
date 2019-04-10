@@ -5,6 +5,7 @@
  */
 package game_ground;
 
+import game_ground.message.Message;
 import java.util.Random;
 
 /**
@@ -84,6 +85,16 @@ public class PapSciStone implements GameMachine {
         GameState=1;
         RivalAction=RivalSrc.nextInt(3);
         System.out.println("這是剪刀石頭布遊戲 ，輸入 1代表石頭，2代表剪刀，3代表布。電腦會隨機選擇一種拳，依照剪刀>布>石頭>剪刀的規則進行。");
+    }
+
+    @Override
+    public Message LoadMessageConfigs(String configuration) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Message getMessage() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
