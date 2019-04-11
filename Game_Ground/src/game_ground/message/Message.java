@@ -13,6 +13,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**r
@@ -22,19 +24,19 @@ import java.util.HashMap;
  * 
  */
 public abstract class Message {
-   private final String WellcomeMessage;
-   private final String YouWinMessage;
-   private final String YoutLoseMessage;
-   private final String YourTurnMessage;
-   private final String HelpMessage;
-   
     
-    public Message(HashMap<String,String> messageLibrary){
-       WellcomeMessage=messageLibrary.get("Wellcom");
-       YouWinMessage=messageLibrary.get("Wellcom");
-       YoutLoseMessage=messageLibrary.get("Wellcom");
-       YourTurnMessage=messageLibrary.get("Wellcom");
-       HelpMessage=messageLibrary.get("Wellcom");
+    abstract void Setup_Messages(HashMap<String,String> messageLibraryPath);
+    abstract HashMap<String,String> loadMessageLibraryFile(String libraryFilePath) throws IOException;
+    //直接取得指定的Message名稱，Key不存在或內容物含有需要付寫的內容而為提供資訊時時丟出錯誤
+    public String get_message(String key){
+        
+        return "";
+    }
+    
+    //取得指定的Key名稱，
+    public String get_message(String key,HashMap<String,String> variables){
+        
+        return "";
     }
     
 }
