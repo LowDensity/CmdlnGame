@@ -13,6 +13,7 @@ import java.util.HashMap;
  * @author HAI
  */
 public class MessageJSON extends Message{
+    
 
     @Override
     void Setup_Messages(HashMap<String, String> messageLibraryPath) {

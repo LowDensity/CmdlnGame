@@ -6,8 +6,10 @@
 package game_ground.message;
 
 import java.io.IOException;
+import java.io.File;
 import java.util.HashMap;
-
+import org.jdom2.*;
+import org.jdom2.input.*;
 /**
  *
  * @author HAI
@@ -15,6 +17,12 @@ import java.util.HashMap;
  */
 public class MessageXML extends Message{
 
+    public MessageXML(String messageLibraryPath) throws JDOMException, IOException{
+           Document messageFile;
+           messageFile=new SAXBuilder().build(new File(messageLibraryPath));
+
+    }
+    
     @Override
     void Setup_Messages(HashMap<String, String> messageLibraryPath) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -28,3 +36,4 @@ public class MessageXML extends Message{
     
     
 }
+
