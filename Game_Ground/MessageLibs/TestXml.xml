@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<MessageLib>
+    <Message name="wellcome"><![CDATA[Wellcome "ss"To<ssssss dq="as">13,; Game]]></Message>
+    <Message name="wellcome2">Wellcome To Game2</Message>
+    <Message name="wellcome3">Wellcome To Game</Message>
+</MessageLib>

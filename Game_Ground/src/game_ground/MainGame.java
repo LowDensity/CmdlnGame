@@ -5,12 +5,15 @@
  */
 package game_ground;
 
+import game_ground.message.Message;
+import game_ground.message.MessageXML;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.jdom2.JDOMException;
 
 /**
  *
@@ -35,6 +38,7 @@ public class MainGame {
         game=new GameLobby();
             do {
                 try{
+                    Message se=new MessageXML("MessageLibs/TestXml.xml");
                     ShowWellcome();
                     ChooseGame();
                     RunGame(); //continue updating until change game
@@ -44,7 +48,10 @@ public class MainGame {
                 }
                 catch(NoGameFoundException ngfe){
                     System.out.println("您輸入的遊戲不存在，請重新輸入。");
-                }
+                } catch (JDOMException ex) {
+                    System.out.println("booooo");
+                Logger.getLogger(MainGame.class.getName()).log(Level.SEVERE, null, ex);
+            }
             }while(game!=null);    
 
      
