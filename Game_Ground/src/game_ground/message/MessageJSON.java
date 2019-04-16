@@ -13,6 +13,12 @@ import java.util.HashMap;
  * @author HAI
  */
 public class MessageJSON extends Message{
+    HashMap<String,String> messageLibrary;
+    
+    public MessageJSON(String libraryFilePath) throws IOException{
+           messageLibrary=loadMessageLibraryFile(libraryFilePath);
+           Setup_Messages(messageLibrary);
+    }
     
 
     @Override
