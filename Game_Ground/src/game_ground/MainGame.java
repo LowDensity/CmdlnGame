@@ -6,6 +6,7 @@
 package game_ground;
 
 import game_ground.message.Message;
+import game_ground.message.MessageJSON;
 import game_ground.message.MessageXML;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -39,6 +40,7 @@ public class MainGame {
             do {
                 try{
                     Message se=new MessageXML("MessageLibs/TestXml.xml");
+                    Message ss=new MessageJSON("MessageLibs/TestJSON.json");
                     ShowWellcome();
                     ChooseGame();
                     RunGame(); //continue updating until change game

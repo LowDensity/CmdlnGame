@@ -7,6 +7,11 @@ package game_ground.message;
 
 import java.io.IOException;
 import java.util.HashMap;
+import com.cedarsoftware.util.io.JsonReader;
+import com.cedarsoftware.util.io.JsonObject;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 
 /**
  *
@@ -22,13 +27,26 @@ public class MessageJSON extends Message{
     
 
     @Override
-    void Setup_Messages(HashMap<String, String> messageLibraryPath) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    void Setup_Messages(HashMap<String, String> messageLibrary) {
+        System.out.println("aaaaa");
+        for (String str : messageLibrary.keySet()){
+            System.out.println("key = "+str+"   val="+messageLibrary.get(str));
+        }
+        
     }
 
     @Override
     HashMap<String, String> loadMessageLibraryFile(String libraryFilePath) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BufferedReader bfr;
+        bfr = new BufferedReader(new FileReader(new File(libraryFilePath)));
+        String jsonString="";
+        String buffer=bfr.readLine();
+        while(buffer!=null){
+            jsonString+=buffer;
+            buffer=bfr.readLine();
+        }
+        System.out.println(jsonString);
+        return (HashMap<String,String>)JsonReader.jsonToJava(jsonString);
     }
     
 }
