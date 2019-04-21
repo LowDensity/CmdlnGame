@@ -48,4 +48,9 @@ public class MessageJSON extends Message{
         return (HashMap<String,String>)JsonReader.jsonToJava(jsonString);
     }
     
+    @Override
+    HashMap<String, String> getMessageLib() {
+        return messageLibrary;
+    }
+    
 }

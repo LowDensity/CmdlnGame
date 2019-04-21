@@ -39,8 +39,6 @@ public class MainGame {
         game=new GameLobby();
             do {
                 try{
-                    Message se=new MessageXML("MessageLibs/TestXml.xml");
-                    Message ss=new MessageJSON("MessageLibs/TestJSON.json");
                     ShowWellcome();
                     ChooseGame();
                     RunGame(); //continue updating until change game
@@ -50,10 +48,7 @@ public class MainGame {
                 }
                 catch(NoGameFoundException ngfe){
                     System.out.println("您輸入的遊戲不存在，請重新輸入。");
-                } catch (JDOMException ex) {
-                    System.out.println("booooo");
-                Logger.getLogger(MainGame.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                }
             }while(game!=null);    
 
      

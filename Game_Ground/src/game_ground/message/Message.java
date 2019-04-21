@@ -24,19 +24,31 @@ import java.util.logging.Logger;
  * 
  */
 public abstract class Message {
-    
     abstract void Setup_Messages(HashMap<String,String> messageLibraryPath);
     abstract HashMap<String,String> loadMessageLibraryFile(String libraryFilePath) throws IOException;
+    abstract HashMap<String,String> getMessageLib();
+    StringBuilder builder=new StringBuilder(1024);
     //直接取得指定的Message名稱，Key不存在或內容物含有需要付寫的內容而為提供資訊時時丟出錯誤
+
+   
     public String get_message(String key){
-        
-        return "";
+        return getMessageLib().get(key);
     }
     
     //取得指定的Key名稱，
-    public String get_message(String key,HashMap<String,String> variables){
+    public String get_message(String key,String[] variables){
+        String[] MessagSections=getMessageLib().get(key).split("{\\d}");
+        builder.setLength(0);
+        for(int i=0;i<MessagSections.length;i++){
+            if(i<variables.length){
+                builder.append(MessagSections[i]).append(variables[i]) ;
+            }else{
+                builder.append(MessagSections[i]);
+            }
+            
+        }
         
-        return "";
+        return builder.toString();
     }
     
 }

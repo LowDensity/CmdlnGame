@@ -45,6 +45,11 @@ public class MessageXML extends Message{
            }
            return messagelib;
     }
+
+    @Override
+    HashMap<String, String> getMessageLib() {
+        return messageLibrary;
+    }
     
     
     
