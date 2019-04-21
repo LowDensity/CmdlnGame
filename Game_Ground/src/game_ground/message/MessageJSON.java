@@ -28,7 +28,6 @@ public class MessageJSON extends Message{
 
     @Override
     void Setup_Messages(HashMap<String, String> messageLibrary) {
-        System.out.println("aaaaa");
         for (String str : messageLibrary.keySet()){
             System.out.println("key = "+str+"   val="+messageLibrary.get(str));
         }

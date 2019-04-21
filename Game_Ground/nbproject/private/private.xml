@@ -3,12 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Game_Ground/CmdLnGame3/CmdlnGame/Game_Ground/src/game_ground/TicToe.java</file>
-            <file>file:/D:/Game_Ground/CmdLnGame3/CmdlnGame/Game_Ground/src/game_ground/GuessingNum.java</file>
-            <file>file:/D:/Game_Ground/CmdLnGame3/CmdlnGame/Game_Ground/src/game_ground/GameLobby.java</file>
+            <file>file:/D:/Game_Ground/CmdLnGame3/CmdlnGame/Game_Ground/src/game_ground/message/MessageXML.java</file>
             <file>file:/D:/Game_Ground/CmdLnGame3/CmdlnGame/Game_Ground/src/game_ground/MainGame.java</file>
-            <file>file:/D:/Game_Ground/CmdLnGame3/CmdlnGame/Game_Ground/src/game_ground/GameMachine.java</file>
-            <file>file:/D:/Game_Ground/CmdLnGame3/CmdlnGame/Game_Ground/src/game_ground/PapSciStone.java</file>
+            <file>file:/D:/Game_Ground/CmdLnGame3/CmdlnGame/Game_Ground/MessageLibs/TestJSON.json</file>
         </group>
     </open-files>
 </project-private>
