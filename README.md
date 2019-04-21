@@ -21,7 +21,10 @@ Probably this can help someone during difficulty.
 
 
 ## Progress Log and Current status
-* 2019/3/24 (current) 
+* 2019/4/21
+	* Finish text resourcing, about to update all game structure
+	** the structure looks overwhelmingly strange...
+* 2019/3/24
     * 3 games have been done and working well.
     * API sill need a lot polish but they do work.
     * Beggining text resourcing.
