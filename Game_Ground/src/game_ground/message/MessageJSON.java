@@ -45,6 +45,7 @@ public class MessageJSON extends Message{
             buffer=bfr.readLine();
         }
         System.out.println(jsonString);
+        bfr.close();
         return (HashMap<String,String>)JsonReader.jsonToJava(jsonString);
     }
     
