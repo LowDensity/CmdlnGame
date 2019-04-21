@@ -28,11 +28,15 @@ public class MainGame {
     private static boolean isrunning=false;
     private static BufferedReader inputReader;
     private static GameMachine game;
+    private static Message mainGameMessage;
     public static void main(String[] args) throws IOException {
         isrunning=true;
         try {
+            mainGameMessage=new MessageXML("MessageLibs/MainGame.xml");
             inputReader=new BufferedReader(new InputStreamReader(System.in,"UTF-8"));
         } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(MainGame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JDOMException ex) {
             Logger.getLogger(MainGame.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -47,7 +51,7 @@ public class MainGame {
                         break;}
                 }
                 catch(NoGameFoundException ngfe){
-                    System.out.println("您輸入的遊戲不存在，請重新輸入。");
+                    System.out.println(mainGameMessage.get_message("GameNonExist"));
                 }
             }while(game!=null);    
 
@@ -97,8 +101,7 @@ public class MainGame {
     
     
     public static void ShowWellcome(){
-        System.out.println("歡迎來到遊戲中心。請輸入要進行的遊戲名稱。");
-        System.out.println("或輸入 list取得目前在系統中的所有遊戲清單。");
+        System.out.println(mainGameMessage.get_message("Wellcome"));
     }
 
     private static void ShowThankMessage() {

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<MessageLib>
+    <Message name="Wellcome">歡迎來到遊戲中心。請輸入要進行的遊戲名稱。\n 或輸入 list取得目前在系統中的所有遊戲清單。</Message>
+    <Message name="GameNonExist">您輸入的遊戲不存在，請重新輸入。</Message>
+</MessageLib>

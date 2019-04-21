@@ -40,7 +40,6 @@ public class MessageXML extends Message{
             throw new IOException();
         }
            for (Element ele :  messageFile.getRootElement().getChildren("Message")){
-               System.out.println(ele.getAttribute("name").getValue()+"  |  "+ele.getText());
                messagelib.put(ele.getAttribute("name").getValue(), ele.getText());
            }
            return messagelib;
