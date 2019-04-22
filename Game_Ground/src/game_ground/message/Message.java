@@ -37,7 +37,7 @@ public abstract class Message {
     
     //取得指定的Key名稱，
     public String get_message(String key,String[] variables){
-        String[] MessagSections=getMessageLib().get(key).split("{\\d}");
+        String[] MessagSections=getMessageLib().get(key).split("\\{\\d\\}");
         builder.setLength(0);
         for(int i=0;i<MessagSections.length;i++){
             if(i<variables.length){

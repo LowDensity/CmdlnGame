@@ -72,7 +72,7 @@ public class MainGame {
        
     }
     
-    private static GameMachine CreateSelectedGame(String name){
+    private static GameMachine CreateSelectedGame(String name) throws IOException{
         switch(name){
             case "GN":return new GuessingNum();
             case "PCS":return new PapSciStone();

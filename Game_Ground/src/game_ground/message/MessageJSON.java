@@ -22,7 +22,6 @@ public class MessageJSON extends Message{
     
     public MessageJSON(String libraryFilePath) throws IOException{
            messageLibrary=loadMessageLibraryFile(libraryFilePath);
-           Setup_Messages(messageLibrary);
     }
     
 
@@ -44,7 +43,7 @@ public class MessageJSON extends Message{
             jsonString+=buffer;
             buffer=bfr.readLine();
         }
-        System.out.println(jsonString);
+        //System.out.println(jsonString);
         bfr.close();
         return (HashMap<String,String>)JsonReader.jsonToJava(jsonString);
     }

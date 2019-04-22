@@ -6,6 +6,8 @@
 package game_ground;
 
 import game_ground.message.Message;
+import game_ground.message.MessageJSON;
+import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -18,17 +20,21 @@ public class PapSciStone implements GameMachine {
     //數字對應到的拳種
     private final int[] RivalActions=new int[]{3,2,1};
     private final int[] PlayerActions=new int[]{1,2,3};
-    private final String[] ActionNames=new String[]{"剪刀","布","石頭"};
+    private final String[] ActionNames=new String[]{"stone","scissor","paper"};
     private Random RivalSrc;
     final int Scissor=0;
     final int Paper=1;
     final int STONE=2;
+    private String[] phrases;
+    private Message messageConfig;
     
-    
-    public PapSciStone(){
+    public PapSciStone() throws IOException{
         GameId=0;
         GameState=0;
         RivalSrc=new Random();
+        phrases=new String[2];
+        messageConfig=new MessageJSON("MessageLibs/PapSciStone.json");
+        
     }
     
     
@@ -56,25 +62,28 @@ public class PapSciStone implements GameMachine {
     final int Scissor=3;
 
         */
+
                 try{
                     PlayerAction=Integer.parseInt(input);
                     PlayerAction-=1;
                     ProcessSetup();
                     int Result=PlayerActions[PlayerAction]+ RivalActions[RivalAction];
+                    phrases[0]=messageConfig.get_message(ActionNames[PlayerAction]);
+                    phrases[1]=messageConfig.get_message(ActionNames[RivalAction]);
+
                         if(Result==4){
-                            return "此局平手，您的動作為:"+ ActionNames[PlayerAction] + "對手的動作為："+ ActionNames[RivalAction];
-                        }else if(Result>4){
-                            if(PlayerAction<RivalAction){return "您的勝利，您的動作為:"+ ActionNames[PlayerAction]  + "對手的動作為："+ ActionNames[RivalAction];}
-                            else{return "您輸了，您的動作為:"+ ActionNames[PlayerAction]  + "對手的動作為："+ ActionNames[RivalAction];}
+                            return messageConfig.get_message("draw",phrases);/*此局平手，您的動作為:"+ ActionNames[PlayerAction] + "對手的動作為："+ ActionNames[RivalAction]*/}
+                        else if(Result>4){
+                            if(PlayerAction<RivalAction){return messageConfig.get_message("draw",phrases);/*"您的勝利，您的動作為:"+ ActionNames[PlayerAction]  + "對手的動作為："+ ActionNames[RivalAction];*/}
+                            else{return messageConfig.get_message("playerlose",phrases);/*"您輸了，您的動作為:"+ ActionNames[PlayerAction]  + "對手的動作為："+ ActionNames[RivalAction];*/}
                         }else{
-                            if(Result==2){return "您輸了，您的動作為:"+ ActionNames[PlayerAction]  + "對手的動作為："+ ActionNames[RivalAction]+"--結果為:"+Result;}
-                            else{return "您的勝利，您的動作為:"+ ActionNames[PlayerAction]  + "對手的動作為："+ ActionNames[RivalAction];}
-                        }
+                            if(Result==2){return messageConfig.get_message("playerlose",phrases);/*"您輸了，您的動作為:"+ ActionNames[PlayerAction]  + "對手的動作為："+ ActionNames[RivalAction]+"--結果為:"+Result;*/}
+                            else{return messageConfig.get_message("playerwin",phrases);/*"您的勝利，您的動作為:"+ ActionNames[PlayerAction]  + "對手的動作為："+ ActionNames[RivalAction];*/}}
                         
                 }catch(NumberFormatException nfe){
-                    return "輸入的數字格式錯誤，請重新輸入。";
+                    return messageConfig.get_message("inputformatincorrect");//"輸入的數字格式錯誤，請重新輸入。";
                 }catch(ArrayIndexOutOfBoundsException AIE){
-                    return "請輸入有效的數字。";
+                    return messageConfig.get_message("inputinvalid");//"請輸入有效的數字。";
                 }
     }
     
@@ -84,7 +93,7 @@ public class PapSciStone implements GameMachine {
         GameId+=1;
         GameState=1;
         RivalAction=RivalSrc.nextInt(3);
-        System.out.println("這是剪刀石頭布遊戲 ，輸入 1代表石頭，2代表剪刀，3代表布。電腦會隨機選擇一種拳，依照剪刀>布>石頭>剪刀的規則進行。");
+        System.out.println(messageConfig.get_message("introduction"));
     }
 
     @Override
