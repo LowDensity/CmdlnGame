@@ -1,9 +1,9 @@
 {
     "introduction":"這是圈圈叉叉遊戲，請輸入您的座標(x,y)",
-    "player_win":"遊戲結束，玩家獲勝",
-    "player_lose":"遊戲結束，電腦獲勝",
+    "playerwin":"遊戲結束，玩家獲勝",
+    "playerlose":"遊戲結束，電腦獲勝",
     "draw":"遊戲結束，平手",
-    "input_invalid":"輸入錯誤，請重新輸入",
+    "inputinvalid":"輸入錯誤，請重新輸入",
     "incorrect_cordinate":"輸入的座標無效，請重新輸入。",
     "block_taken":"輸入的格子已被使用，請重新輸入。",
     "playerturn_hint":"您的回合，請輸入要設定的座標，格式為(x,y)，計算從1開始。\n 當下盤面為：{1}"

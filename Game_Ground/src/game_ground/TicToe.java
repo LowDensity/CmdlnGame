@@ -6,6 +6,10 @@
 package game_ground;
 
 import game_ground.message.Message;
+import game_ground.message.MessageJSON;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 /**
@@ -22,10 +26,12 @@ public class TicToe implements GameMachine {
     public static final int UNASSIGNED_BLOCK=0;
     public static final int PLAYER_TOKEN=1;
     public static final int RIVAL_TOKEN=2;
+    private Message messageConfig;
     
-    public TicToe(){
+    public TicToe() throws IOException{
         GameId=0;
         GameState=0;
+        messageConfig = new MessageJSON("MessageLibs/TicToe.json");
         
     }
     
@@ -46,16 +52,16 @@ public class TicToe implements GameMachine {
     
     private String ProcessWinnerMessage(int winner){
         switch(winner){
-            case PLAYER_TOKEN:return "遊戲結束，玩家獲勝";
-            case RIVAL_TOKEN:return "遊戲結束，電腦獲勝";
-            case GAME_FINISHED:return "遊戲結束，平手";
+            case PLAYER_TOKEN:return messageConfig.get_message("playerwin");
+            case RIVAL_TOKEN:return messageConfig.get_message("playerlose");
+            case GAME_FINISHED:return messageConfig.get_message("draw");
             default:return "未知結果，天殺的有BUG!!!!!!!!!!!!!!!!!!!!!!";
         }
     }
     
     private String ProcessInput(String arg){
         if(!arg.trim().matches(cordinatePattern)){
-            return "輸入錯誤，請重新輸入";
+            return messageConfig.get_message("inputinvalid");
         }
         String[] cordinate=arg.split("[\\D]");
         int x= Integer.parseInt(cordinate[1])-1;
@@ -65,9 +71,9 @@ public class TicToe implements GameMachine {
         try{
             currentNumber= tictoeboard[inputIndex];
         }catch(ArrayIndexOutOfBoundsException aioe){
-            return "輸入的座標無效，請重新輸入。";
+            return messageConfig.get_message("incorrect_cordinate");
         }
-        if (currentNumber!=UNASSIGNED_BLOCK){return "輸入的格子已被使用，請重新輸入。";}
+        if (currentNumber!=UNASSIGNED_BLOCK){return messageConfig.get_message("block_taken");}
         else{tictoeboard[inputIndex]=PLAYER_TOKEN;}
         int winner=GetWinner();
         if (winner!=UNASSIGNED_BLOCK){return ProcessWinnerMessage(winner);}
@@ -90,7 +96,7 @@ public class TicToe implements GameMachine {
             tictoeBoardStatus.append(" "+tictoeboard[i]+" , ");
             if((i+1) %3==0){tictoeBoardStatus.append("\n");}
         }
-        return "您的回合，請輸入要設定的座標，格式為(x,y)，計算從1開始。\n 當下盤面為：\n"+tictoeBoardStatus.toString();
+        return messageConfig.get_message("playerturn_hint","\n"+tictoeBoardStatus.toString()) ;
     }
     
     //判斷遊戲是否已經結束，回傳贏家的數字代號。

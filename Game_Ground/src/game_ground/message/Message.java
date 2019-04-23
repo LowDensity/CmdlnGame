@@ -35,6 +35,16 @@ public abstract class Message {
         return getMessageLib().get(key);
     }
     
+    
+    public String get_message(String key,String onlyParam){
+        return getMessageLib().get(key)
+                .replaceFirst("\\{\\d\\}", onlyParam)
+                .replaceAll("\\{\\d\\}", "")
+                ;
+    }
+    
+    
+    
     //取得指定的Key名稱，
     public String get_message(String key,String[] variables){
         String[] MessagSections=getMessageLib().get(key).split("\\{\\d\\}");
