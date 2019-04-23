@@ -2,7 +2,8 @@
 
 ## What is this?
 
-This is my JAVA Practicing project whith was origninally started few years ago during JAVA course as a self practice. And hope to share with anyone who came across this repository my small research result.
+This is my JAVA Practicing project whith was origninally started few years ago during JAVA course as a self practice. And hope to share 
+with anyone who came across this repository my small research result.
 Probably this can help someone during difficulty. 
 
 ## The Project Content
@@ -14,10 +15,18 @@ Probably this can help someone during difficulty.
     * TicToe
 * Unified Game Api Which allows extending with ease. 
 * Xml /Json based text resourcing(done)
+* support multi language(current)
 * not-so-sure stuff  
     * Plug-in structrue
     * Content injection(through  Xml/Json)
     * A set of standardized command-line command processing mechanic
+	
+## Current improving
+* MessageJSON doesn't handle \n well.
+	*Also Check XML version
+* Lobby uses Game_Machine
+* Structure improving
+	*quit/cancel game in game
 
 
 ## Progress Log and Current status
