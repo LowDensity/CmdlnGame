@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package game_ground;
-//
+//----
 import game_ground.message.Message;
 import game_ground.message.MessageJSON;
 import java.io.IOException;
